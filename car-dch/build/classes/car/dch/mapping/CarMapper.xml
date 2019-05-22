@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名,这样能够保证namespace的值是唯一的 -->
+<mapper namespace="car.dch.mapping.CarMapper">
+    
+    <resultMap id="CarMap" type="car.dch.entity.Car">
+        <id property="cID" column="cID"/>
+        <result property="cName" column="cName"/>
+        <result property="price" column="price"/>
+        <result property="company" column="company"/>
+        <result property="type" column="type"/>
+        <result property="photoPath" column="photoPath"/>
+        <result property="detailPath" column="detailPath"/>
+    </resultMap>
+
+    <!-- 更新车辆信息 -->
+    <update id="updateCar" parameterType="car.dch.entity.Car">
+        update car
+        set cName = #{cName},price = #{price},company = #{company},type = #{type}
+        where cID = #{cID}
+    </update>
+    <!-- 得到车辆信息 -->
+    <select id="getCar" parameterType="Integer" 
+        resultMap="CarMap" resultType="car.dch.entity.Car">
+        select cID,cName,price,company,type,photoPath,detailPath
+		from car
+		where cID = #{cID}
+    </select>
+    <!-- 删除车辆信息 -->
+    <delete id="deleteCar" parameterType="Integer">
+		delete from car where cID = #{cID}
+	</delete>
+	
+	<!-- 添加车辆信息 -->
+	<insert id="addCar" parameterType="car.dch.entity.Car">
+		insert into 
+		car(cName,price,company,type) 
+		values (#{cName},#{price},#{company},#{type})
+	</insert>
+	
+	<!-- 获得所有车辆信息 -->
+	<select id="listCar" resultMap="CarMap"
+		resultType="car.dch.entity.Car">
+		select cID,cName,price,company,type,photoPath,detailPath
+		from car
+	</select>
+	
+	<!--  获得该用户已经租借的车辆信息 -->
+	<select id="listBorrowCar" resultMap="CarMap"
+	    resultType="car.dch.entity.Car">
+	    select car.cID,cName,price,company,type,photoPath,detailPath
+		from car INNER JOIN record 
+		where car.cID = record.cID AND uID = #{uID}
+	</select>
+	
+</mapper>

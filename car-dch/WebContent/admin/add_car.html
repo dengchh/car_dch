@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>添加车辆信息</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="../js/common/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="../js/common/jquery.growl.js"></script>
+<script type="text/javascript" src="../js/common/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/admin/addCar.js"></script>
+<link type="text/css" href="../css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="../css/jquery.growl.css" rel="stylesheet">
+<link type="text/css" href="../css/layui.css" rel="stylesheet">
+<link type="text/css" href="../css/admin/addCar.css" rel="stylesheet">
+<link rel="shortcut icon" href="#" />
+</head>
+<body>
+<h1>添加车辆：</h1>
+<div>
+    <form class="form-horizontal" role="form" action="../admin/addCar.do" method="post">
+        <div class="form-group">
+            <label for="carName" class="col-sm-2 control-label">车辆名称：</label>
+            <div class="col-lg-10">
+                <input name="carName" type="text" class="form-control" id="carName" placeholder="请输入车辆名称" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="carPrice" class="col-sm-2 control-label">车辆价格：</label>
+            <div class="col-lg-10">
+                <input name="carPrice" type="text" class="form-control" id="carPrice" placeholder="请输入车辆价格" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="carCompany" class="col-sm-2 control-label">产出公司：</label>
+            <div class="col-lg-10">
+                <input name="carCompany" type="text" class="form-control" id="carCompany" placeholder="请输入产出公司" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="carType" class="col-sm-2 control-label">车辆类型：</label>
+            <div class="col-lg-10">
+                <input name="carType" type="text" class="form-control" id="carType" placeholder="请输入车辆类型" >
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary btn-lg" onclick="toAdd()">提交</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

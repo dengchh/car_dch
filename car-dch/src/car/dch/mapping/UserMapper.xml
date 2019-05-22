@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名,这样能够保证namespace的值是唯一的 -->
+<mapper namespace="car.dch.mapping.UserMapper">
+    
+    <resultMap id="UserMap" type="car.dch.entity.User">
+        <id property="uID" column="userID"/>
+        <result property="uName" column="userName"/>
+        <result property="uPwd" column="userPwd"/>
+        <result property="name" column="name"/>
+        <result property="uPhone" column="userPhone"/>
+        <result property="uState" column="userState"/>
+    </resultMap>
+    
+    <!-- 禁用用户 -->
+    <update id="ban" parameterType="Map">
+        update user
+        set userState = #{userState}
+        where userID = #{userID}
+    </update>
+    
+	<!-- 登录查询 -->
+	<select id="userLogin" parameterType="Map" resultMap="UserMap"
+	    resultType="car.dch.entity.User">
+	    select userID,userName,userPwd,name,userPhone,userState
+	    from user
+	    where userName = #{userName} and userPwd = #{userPwd}
+	</select>
+	
+	<!-- 通过用户名查找到用户 -->
+	<select id="selectUserByUserName" parameterType="String" resultMap="UserMap"
+	    resultType="car.dch.entity.User">
+	    select userID,userName,userPwd,name,userPhone,userState
+	    from user
+	    where userName = #{userName}
+	</select>
+	
+	<!-- 通过用户状态展示用户列表 -->
+	<select id="listUserByState" parameterType="Integer" resultMap="UserMap"
+	    resultType="car.dch.entity.User">
+	    select userID,userName,userPwd,name,userPhone,userState
+	    from user
+	    where userState = #{uState}
+	</select>
+	
+	<!-- 添加用户信息 -->
+	<insert id="addUser" parameterType="car.dch.entity.User">
+		insert into 
+		user(userName,userPwd,name,userPhone,userState) 
+		values (#{uName},#{uPwd},#{name},#{uPhone},#{uState})
+	</insert>
+</mapper>
