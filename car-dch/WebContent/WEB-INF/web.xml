@@ -4,6 +4,7 @@
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <servlet-name>MainControllerServlet</servlet-name>
     <servlet-class>car.dch.controller.MainControllerServlet</servlet-class>
