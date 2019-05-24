@@ -6,7 +6,6 @@ public class Admin {
 	private String aPwd;
 	private String aName;
 	private String aPhone;
-	
 	public int getaID() {
 		return aID;
 	}

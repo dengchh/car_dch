@@ -8,7 +8,6 @@ public class Car {
 	private String type;
 	private String photoPath;
 	private String detailPath;
-	
 	public String getPhotoPath() {
 		return photoPath;
 	}
