@@ -8,6 +8,7 @@ public class Record {
 	private int uID;
 	private Timestamp borrDate;
 	private Timestamp returnDate;
+	
 	public int getRecordID() {
 		return recordID;
 	}

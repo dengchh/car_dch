@@ -7,6 +7,7 @@ public class User {
 	private String name;
 	private String uPhone;
 	private int uState;
+	
 	public int getuID() {
 		return uID;
 	}
