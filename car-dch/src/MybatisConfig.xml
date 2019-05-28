@@ -4,10 +4,14 @@
 
 <configuration>
     
-    <settings>
+<!--     <settings>
   	   <setting name="logImpl" value="LOG4J" /> 
        <setting name="autoMappingBehavior" value="FULL"/> 
     </settings>
+     -->
+    <plugins>
+        <plugin interceptor="car.dch.utils.SqlCostInterceptor" />
+    </plugins>
     
 	<environments default="development">
 		<environment id="development">
